@@ -19,8 +19,7 @@ Route::get('/', function () {
 });
 
 
-// routes/web.php
-
-
-Route::get('/register', [UserController::class, 'showRegistrationForm'])->name('register.form');
-Route::post('/register', [UserController::class, 'register'])->name('register');
+Route::middleware(['web'])->group(function () {
+    Route::get('/register', [UserController::class, 'showRegistrationForm'])->name('register.form');
+    Route::post('/register', [UserController::class, 'register'])->name('register');
+});
